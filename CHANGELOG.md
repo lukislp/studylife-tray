@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/lukislp/studylife-tray/compare/v1.0.0...v1.0.1) (2026-09-18)
+
+
+### Bug Fixes
+
+* **ci:** disable MSYS path conversion for the cosign verify-blob step ([#21](https://github.com/lukislp/studylife-tray/issues/21)) ([631977f](https://github.com/lukislp/studylife-tray/commit/631977f048d6ffd385dd3a57ee26e7a2d98f42c6))
+
 # 1.0.0 (2026-09-18)
 
 
