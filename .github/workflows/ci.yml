@@ -124,6 +124,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ steps.semrel.outputs.new_release_git_tag || steps.semrel_retry.outputs.new_release_git_tag }}
+          # Git Bash on windows-latest auto-converts /-heavy arguments into Windows paths (MSYS
+          # path conversion) before they reach cosign.exe - it mangled
+          # --certificate-identity-regexp into an unmatchable string (observed: an extra slash
+          # inserted before ".github" and "\." turned into "/."). Disabling that conversion for
+          # this step is the standard fix; studylife-vscode never hit this because its equivalent
+          # job runs on ubuntu-latest, which has no such conversion.
+          MSYS_NO_PATHCONV: "1"
         run: |
           cosign sign-blob --yes --bundle StudyLifeTray.exe.sigstore.json StudyLifeTray.exe
           cosign verify-blob --bundle StudyLifeTray.exe.sigstore.json \
