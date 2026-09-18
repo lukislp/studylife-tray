@@ -1,5 +1,10 @@
 # StudyLife Tray
 
+[![CI](https://github.com/lukislp/studylife-tray/actions/workflows/ci.yml/badge.svg)](https://github.com/lukislp/studylife-tray/actions/workflows/ci.yml) [![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/lukislp/studylife-tray?label=openssf+scorecard&style=flat)](https://scorecard.dev/viewer/?uri=github.com/lukislp/studylife-tray) [![CodeQL](https://github.com/lukislp/studylife-tray/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/lukislp/studylife-tray/security/code-scanning)
+[![Release](https://img.shields.io/github/v/release/lukislp/studylife-tray)](https://github.com/lukislp/studylife-tray/releases)
+[![License: AGPL-3.0](https://img.shields.io/github/license/lukislp/studylife-tray)](LICENSE)
+[![.NET](https://img.shields.io/badge/.NET-10-512BD4)](https://dotnet.microsoft.com/)
+
 A Windows system tray app that shows your [StudyLife](https://github.com/lukislp/studylife)
 focus-session status - independent of any browser, so it works even when you don't have one
 open, and doesn't count against a browser's limited number of installable extensions.
