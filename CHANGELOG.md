@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/lukislp/studylife-tray/compare/v1.0.2...v1.0.3) (2026-09-20)
+
+
+### Bug Fixes
+
+* **ci:** correct missing Harden Runner allowlist ports (github.com:22, crl:80) ([#27](https://github.com/lukislp/studylife-tray/issues/27)) ([a9fa1f2](https://github.com/lukislp/studylife-tray/commit/a9fa1f22556f574c2980cfb1d1be02746b40997e))
+
 ## [1.0.2](https://github.com/lukislp/studylife-tray/compare/v1.0.1...v1.0.2) (2026-09-20)
 
 
