@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/lukislp/studylife-tray/compare/v1.0.1...v1.0.2) (2026-09-20)
+
+
+### Bug Fixes
+
+* **ci:** add Harden Runner in audit mode to every job ([#25](https://github.com/lukislp/studylife-tray/issues/25)) ([64141d1](https://github.com/lukislp/studylife-tray/commit/64141d1796662ca9ac4a3e3facc38ce02a45e45b))
+
 ## [1.0.1](https://github.com/lukislp/studylife-tray/compare/v1.0.0...v1.0.1) (2026-09-18)
 
 
