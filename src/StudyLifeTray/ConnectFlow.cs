@@ -109,7 +109,7 @@ public static class ConnectFlow
     private static async Task RespondWithClosePageAsync(HttpListenerContext context)
     {
         const string html = "<!doctype html><html><body style=\"font-family:sans-serif;text-align:center;padding-top:3rem\">" +
-            "<h2>Connected to StudyLife</h2><p>You can close this window and return to the StudyLife Tray app.</p></body></html>";
+            "<h2>Connected to StudyAtrium</h2><p>You can close this window and return to the StudyAtrium Tray app.</p></body></html>";
         var bytes = System.Text.Encoding.UTF8.GetBytes(html);
         context.Response.ContentType = "text/html; charset=utf-8";
         context.Response.ContentLength64 = bytes.Length;

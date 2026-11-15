@@ -31,7 +31,7 @@ small - but it is the same for every change, including the maintainer's own.
 - **No secrets or personal data.** Nothing under `src/` or `tests/` should reference a real
   server URL, hostname, or email - use a placeholder like `https://studylife.example.com`, the way
   the existing tests do.
-- **Wire shapes.** `ApiClient.cs` talks to a couple of StudyLife REST endpoints
+- **Wire shapes.** `ApiClient.cs` talks to a couple of StudyAtrium REST endpoints
   (`GET /api/timerstate`, `POST /api/auth/tray-assertion-exchange`) through small hand-written DTOs
   such as `TimerStateDtoPayload`. The server accepts unknown JSON properties silently, so a wrong
   field name produces a green build and a tray icon that quietly never updates - check a field
