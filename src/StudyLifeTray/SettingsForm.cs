@@ -19,7 +19,7 @@ public sealed class SettingsForm : Form
         _settings = settings;
         _apiClient = apiClient;
 
-        Text = "StudyLife Tray - Settings";
+        Text = "StudyAtrium Tray - Settings";
         Width = 420;
         Height = 200;
         FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -27,7 +27,7 @@ public sealed class SettingsForm : Form
         MinimizeBox = false;
         StartPosition = FormStartPosition.CenterScreen;
 
-        var urlLabel = new Label { Text = "StudyLife server URL:", Left = 16, Top = 16, Width = 380 };
+        var urlLabel = new Label { Text = "StudyAtrium server URL:", Left = 16, Top = 16, Width = 380 };
         _serverUrlBox = new TextBox
         {
             Left = 16, Top = 40, Width = 380,

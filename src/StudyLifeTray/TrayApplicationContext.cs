@@ -27,7 +27,7 @@ public sealed class TrayApplicationContext : ApplicationContext
     {
         _settings = SettingsStore.Load();
 
-        var openStudyLife = new ToolStripMenuItem("Open StudyLife", null, (_, _) => OpenStudyLife());
+        var openStudyLife = new ToolStripMenuItem("Open StudyAtrium", null, (_, _) => OpenStudyLife());
         var settingsItem = new ToolStripMenuItem("Settings…", null, (_, _) => OpenSettings());
         var exitItem = new ToolStripMenuItem("Exit", null, (_, _) => ExitThread());
         var menu = new ContextMenuStrip();
@@ -36,7 +36,7 @@ public sealed class TrayApplicationContext : ApplicationContext
         _notifyIcon = new NotifyIcon
         {
             Icon = SystemIcons.Application, // placeholder - swap for a real StudyLife-branded .ico
-            Text = "StudyLife Tray",
+            Text = "StudyAtrium Tray",
             ContextMenuStrip = menu,
             Visible = true,
         };
@@ -104,12 +104,12 @@ public sealed class TrayApplicationContext : ApplicationContext
 
     private void UpdateIconForSession(bool isRunning)
     {
-        _notifyIcon.Text = Truncate(isRunning ? "StudyLife: focus session active" : "StudyLife: no session running");
+        _notifyIcon.Text = Truncate(isRunning ? "StudyAtrium: focus session active" : "StudyAtrium: no session running");
     }
 
     private void UpdateIconForDisconnected()
     {
-        _notifyIcon.Text = "StudyLife: not connected";
+        _notifyIcon.Text = "StudyAtrium: not connected";
     }
 
     // NotifyIcon.Text has a hard 63-character limit (throws ArgumentOutOfRangeException past it).
