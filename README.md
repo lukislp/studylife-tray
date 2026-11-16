@@ -16,7 +16,10 @@ open, and doesn't count against a browser's limited number of installable extens
 1. Connect it to your self-hosted StudyAtrium server (base URL only) via the tray icon's
    Settings window - the same passkey-backed consent flow the browser-based add-ons use,
    adapted for a native app (your default browser opens to approve the connection, then hands
-   control back to this app over a local loopback redirect - RFC 8252).
+   control back to this app over a local loopback redirect - RFC 8252). The flow uses PKCE
+   (RFC 7636, S256): a fresh secret verifier per attempt stays in memory and is only sent with
+   the final server-to-server exchange, so another local process that sees the redirect cannot
+   redeem the assertion.
 2. The app polls `GET /api/timerstate` roughly every 30 seconds and updates the tray icon's
    tooltip to reflect whether a focus session is currently running.
 3. Double-click the tray icon (or use "Open StudyAtrium" from its menu) to jump straight to your

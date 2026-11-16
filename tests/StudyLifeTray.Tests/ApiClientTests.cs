@@ -68,7 +68,7 @@ public class ApiClientTests
         });
         var client = new ApiClient(new HttpClient(handler));
 
-        var result = await client.ExchangeAssertionAsync("https://study.test", "the-assertion", CancellationToken.None);
+        var result = await client.ExchangeAssertionAsync("https://study.test", "the-assertion", "the-verifier", CancellationToken.None);
 
         Assert.NotNull(result);
         Assert.Equal(1, result!.Value.UserId);
@@ -76,6 +76,7 @@ public class ApiClientTests
         var request = Assert.Single(handler.Requests);
         Assert.Equal("https://study.test/api/auth/tray-assertion-exchange", request.Uri);
         Assert.Contains("\"assertion\":\"the-assertion\"", request.Body);
+        Assert.Contains("\"codeVerifier\":\"the-verifier\"", request.Body);
     }
 
     [Fact]
@@ -84,7 +85,7 @@ public class ApiClientTests
         var handler = new StubHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.Unauthorized));
         var client = new ApiClient(new HttpClient(handler));
 
-        var result = await client.ExchangeAssertionAsync("https://study.test", "bad-assertion", CancellationToken.None);
+        var result = await client.ExchangeAssertionAsync("https://study.test", "bad-assertion", "verifier", CancellationToken.None);
 
         Assert.Null(result);
     }
@@ -98,7 +99,7 @@ public class ApiClientTests
         });
         var client = new ApiClient(new HttpClient(handler));
 
-        var result = await client.ExchangeAssertionAsync("https://study.test", "assertion", CancellationToken.None);
+        var result = await client.ExchangeAssertionAsync("https://study.test", "assertion", "verifier", CancellationToken.None);
 
         Assert.Null(result);
     }
