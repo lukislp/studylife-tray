@@ -68,10 +68,10 @@ public sealed class ApiClient
     /// <summary>Server-to-server exchange of the single-use connect assertion for the real
     /// AuthUserId and the plaintext TrayApiKey - see ConnectFlow.RunAsync. Anonymous POST: the
     /// assertion itself is the credential.</summary>
-    public async Task<(int UserId, string TrayApiKey)?> ExchangeAssertionAsync(string serverUrl, string assertion, CancellationToken ct)
+    public async Task<(int UserId, string TrayApiKey)?> ExchangeAssertionAsync(string serverUrl, string assertion, string codeVerifier, CancellationToken ct)
     {
         using var response = await _http.PostAsJsonAsync($"{serverUrl}/api/auth/tray-assertion-exchange",
-            new { assertion }, ct);
+            new { assertion, codeVerifier }, ct);
         if (!response.IsSuccessStatusCode) return null;
 
         var body = await response.Content.ReadFromJsonAsync<TrayAssertionExchangeResponse>(cancellationToken: ct);

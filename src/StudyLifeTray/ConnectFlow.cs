@@ -64,7 +64,8 @@ public static class ConnectFlow
 
         var state = Guid.NewGuid().ToString("N");
         var redirectUri = $"http://127.0.0.1:{port}/callback";
-        var authUrl = $"{serverUrl}/connect/tray?redirect_uri={Uri.EscapeDataString(redirectUri)}&state={Uri.EscapeDataString(state)}";
+        var codeVerifier = Pkce.CreateVerifier();
+        var authUrl = BuildAuthUrl(serverUrl, redirectUri, state, Pkce.CreateChallenge(codeVerifier));
 
         try
         {
@@ -100,11 +101,16 @@ public static class ConnectFlow
         if (string.IsNullOrEmpty(assertion) || returnedState != state)
             return new ConnectResult(ConnectResultKind.StateMismatch);
 
-        var exchange = await apiClient.ExchangeAssertionAsync(serverUrl, assertion, ct);
+        var exchange = await apiClient.ExchangeAssertionAsync(serverUrl, assertion, codeVerifier, ct);
         if (exchange is null) return new ConnectResult(ConnectResultKind.ExchangeFailed);
 
         return new ConnectResult(ConnectResultKind.Success, exchange.Value.TrayApiKey);
     }
+
+    /// <summary>Consent URL including the PKCE S256 challenge (RFC 7636); servers that predate PKCE ignore the extra parameters.</summary>
+    public static string BuildAuthUrl(string serverUrl, string redirectUri, string state, string codeChallenge) =>
+        $"{serverUrl}/connect/tray?redirect_uri={Uri.EscapeDataString(redirectUri)}&state={Uri.EscapeDataString(state)}" +
+        $"&code_challenge={Uri.EscapeDataString(codeChallenge)}&code_challenge_method=S256";
 
     private static async Task RespondWithClosePageAsync(HttpListenerContext context)
     {
