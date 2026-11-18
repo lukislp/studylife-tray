@@ -26,7 +26,7 @@ public sealed record ConnectResult(ConnectResultKind Kind, string? ApiKey = null
 ///
 /// Flow: bind a loopback listener on an OS-assigned port -&gt; open the system's default browser
 /// to {serverUrl}/connect/tray?redirect_uri=...&amp;state=... (the user approves there, in a real
-/// browser, using their existing StudyLife session) -&gt; the browser navigates to our loopback
+/// browser, using their existing StudyAtrium session) -&gt; the browser navigates to our loopback
 /// listener with ?assertion=...&amp;state=... -&gt; verify state round-trips -&gt; exchange the
 /// assertion server-to-server for the real TrayApiKey (ApiClient.ExchangeAssertionAsync).
 /// </summary>
