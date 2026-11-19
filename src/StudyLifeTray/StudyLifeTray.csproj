@@ -10,4 +10,8 @@
     <RootNamespace>StudyLifeTray</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="StudyLifeTray.Tests" />
+  </ItemGroup>
+
 </Project>
