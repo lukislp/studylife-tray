@@ -32,11 +32,19 @@ something faster.
 
 ## Why the API key is this narrow
 
-The Tray app's StudyAtrium key can reach exactly one endpoint: `GET /api/timerstate` (plus
-`whoami` for diagnostics) - identical scope to
-[studylife-focusguard](https://github.com/lukislp/studylife-focus). It can't read your notes,
-sessions, courses, or settings, and it can't write anything at all.
+The Tray app's StudyAtrium key can reach exactly two read-only endpoints: `GET /api/timerstate`
+and `GET /api/auth/whoami` (your numeric user id and the key's slot name, for diagnostics) -
+identical scope to [studylife-focusguard](https://github.com/lukislp/studylife-focus). The app
+itself only ever calls `timerstate`. The key can't read your notes, sessions, courses, or
+settings, and it can't write anything. Your server enforces that limit, not this app. The timer
+state still shows when you are studying, so treat the key like a password: it is stored in
+`%APPDATA%\StudyLifeTray\settings.json`, encrypted with Windows DPAPI for your Windows user.
 
+## Privacy
+
+See [PRIVACY.md](PRIVACY.md) for what is read, what is stored, and how to delete it (Disconnect in
+the settings window, or delete `%APPDATA%\StudyLifeTray`). Controller: the operator of your
+instance. Publisher: see the imprint at <https://lktec.org/impressum>.
 ## Development
 
 Requires the .NET 10 SDK with the Windows Forms workload (Windows only - `net10.0-windows`).
